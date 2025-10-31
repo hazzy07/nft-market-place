@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter Tight Variable", sans-serif;
+  color: white;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 5s linear infinite;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 992px){
+.swapContainer{
+  width: 100%;
+  max-width: 668px !important;
+  margin: 0 auto !important;
+}
+}
+
+@media (max-width: 710px){
+.swapContainer{
+  width: 100%;
+  max-width: 558px !important;
+  margin: 0 auto !important;
+}
+}
+
+
+
+@media (max-width: 576px){
+.swapContainer{
+  max-width: 358px !important;
+}
+
+.token{
+  max-width: 309px !important;
+}
+
+}
+
+
+@media (max-width: 414px) {
+    .swapContainer {
+        max-width: 310px !important;
+    }
+    .token{
+  max-width: 309px !important;
+}
+.riddit {
+width: 40px;
+}
+
+.spark{
+  width: 74px;
+  display: flex;
+}
+
+}
+
+@media (max-width: 377px) {
+    .swapContainer {
+        max-width: 270px !important;
+    }
+    .token{
+  max-width: 309px !important;
+}
+}
+
+@media (max-width: 317px) {
+    .swapContainer {
+        max-width: 220px !important;
+    }
+    .token{
+  max-width: 309px !important;
+}
+}
