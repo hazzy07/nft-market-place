@@ -22,12 +22,12 @@ export default function Sidebar() {
 
   const menuItems = [
     { path: "/", icon: <MdOutlineExplore size={20} />, label: "Discover" },
-    { path: "/profile", icon: <BsGrid1X2 size={18} />, label: "Collection" },
+    { path: "/Profile", icon: <BsGrid1X2 size={18} />, label: "Collection" },
     { path: "/Tokens", icon: <StokeToken size={20} />, label: "Tokens" },
-    { path: "/calender", icon: <CiCalendar size={20} />, label: "Drop" },
-    { path: "/activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
-    { path: "/reward", icon: <Rewards size={20} />, label: "Rewards" },
-    { path: "/studio", icon: <Studio size={20} />, label: "Studio" },
+    { path: "/Calender", icon: <CiCalendar size={20} />, label: "Drop" },
+    { path: "/Activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
+    { path: "/Reward", icon: <Rewards size={20} />, label: "Rewards" },
+    { path: "/Studio", icon: <Studio size={20} />, label: "Studio" },
     { divider: true },
     { path: "/Help", icon: <HelpIcon size={22} />, label: "Support" },
   ];
@@ -76,7 +76,7 @@ export default function Sidebar() {
         </div>
 
         <div className="flex flex-col flex-grow p-2 overflow-y-auto no-scrollbar">
-          <div className="hidden md:flex items-center  hover:justify-start  gap-3 pt-3 mb-6 font-inter text-2xl font-[500] text-center">
+          <div className="hidden md:flex items-center  hover:justify-start ml-1 gap-3 pt-3 mb-6 font-inter text-2xl font-[500] text-center">
             <img src={Logo} alt="Logo" className="w-8 h-8" />
             <span className="hidden md:group-hover:block">QSEA</span>
           </div>
