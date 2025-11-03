@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TabsStructure from "../reusableComponent/TabsStructure";
 import { BsGrid1X2 } from "react-icons/bs";
-import { StokeToken } from "../../assets/Home/HomeRoute";
+import { StokeToken } from "../../assets/Route/HomeRoute";
 import TokenContent from "./TokenContent";
 import NFTsContent from "./NFTsContent";
 

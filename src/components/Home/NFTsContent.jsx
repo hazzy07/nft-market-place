@@ -8,7 +8,7 @@ import {
   SubQuer,
   BunPoodle,
   NonKyot,
-} from "../../assets/Home/HomeRoute";
+} from "../../assets/Route/HomeRoute";
 import Dropdown from "../reusableComponent/Dropdown";
 import { MdOutlineTableRows } from "react-icons/md";
 

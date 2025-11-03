@@ -10,7 +10,7 @@ import {
   HyPurr,
   QuineLarvels,
   PixCat,
-} from "../../assets/Home/HomeRoute";
+} from "../../assets/Route/HomeRoute";
 
 export default function CardsReel() {
   const cards = [

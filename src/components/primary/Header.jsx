@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { LiaUserCircle } from "react-icons/lia";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
+
+  // Check current route
+  const isFunkari = location.pathname === "/Funkari";
 
   return (
-    <div className="bg-black h-[60px] hidden md:flex items-center justify-between px-4 border-b-2 border-[#2D2E31] font-interTight relative">
+    <header
+      className={` top-0 left-[60px] right-0 z-50 h-[60px] hidden md:flex items-center justify-between px-4 font-interTight border-b-2 border-[#2D2E31] transition-all duration-300 ${
+        isFunkari ? "bg-black fixed" : "bg-black fixed"
+      }`}
+    >
       {/* Search Bar */}
       <div className="relative flex items-center w-full max-w-sm border border-[#2D2E31] rounded-md px-3 py-2">
         <FiSearch className="text-white w-5 h-5 mr-2" />
         <input
           type="text"
           placeholder="Search QTOVNFT"
-          className="bg-transparent flex-1 font-inter font-[400] text-[14px] outline-none text-white "
+          className="bg-transparent flex-1 font-inter font-[400] text-[14px] outline-none text-white"
         />
         <span
           onClick={() => setIsModalOpen(true)}
@@ -33,34 +41,32 @@ export default function Header() {
           </span>
         </NavLink>
 
-        {/* Divider */}
         <div className="h-6 w-px bg-[#2D2E31] mx-4"></div>
 
-        {/* User Icon */}
         <LiaUserCircle className="text-white w-7 h-7" />
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[9999]"
           onClick={() => setIsModalOpen(false)}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-black text-white p-6 rounded-md w-[300px] text-center"
+            className="bg-black text-white p-6 rounded-md w-[300px] text-center border border-[#2D2E31]"
           >
             <div className="flex mb-4 justify-between items-center">
               <h2 className="text-lg">Search Modal</h2>
               <span
                 onClick={() => setIsModalOpen(false)}
-                className="cursor-pointer "
+                className="cursor-pointer"
               >
                 <RxCross2 />
               </span>
             </div>
-            <div className="relative flex items-center w-full max-w-sm border border-[#2D2E31] rounded-md px-3 py-2">
-              <FiSearch fontSize={"21px"} className="text-white " />
+            <div className="relative flex items-center w-full border border-[#2D2E31] rounded-md px-3 py-2">
+              <FiSearch fontSize={"21px"} className="text-white" />
               <input
                 type="text"
                 placeholder="Search QTOVNFT"
@@ -70,6 +76,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }

@@ -9,7 +9,7 @@ import {
   SubQuer,
   BunPoodle,
   NonKyot,
-} from "../../assets/Home/HomeRoute";
+} from "../../assets/Route/HomeRoute";
 import Sparkline from "../reusableComponent/Sparkline";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";

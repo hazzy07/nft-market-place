@@ -3,6 +3,7 @@ import { LineChart, Line, ResponsiveContainer } from "recharts";
 
 const Sparkline = ({ data, color = "#22c55e", height = 40, width = 90 }) => {
   return (
+   
     <ResponsiveContainer width={width} height={height}>
       <LineChart data={data}>
         <Line
@@ -14,6 +15,8 @@ const Sparkline = ({ data, color = "#22c55e", height = 40, width = 90 }) => {
         />
       </LineChart>
     </ResponsiveContainer>
+
+   
   );
 };
 

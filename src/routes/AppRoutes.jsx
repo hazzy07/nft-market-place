@@ -9,6 +9,7 @@ import Reward from "../pages/Reward";
 import Studio from "../pages/Studio";
 import Help from "../pages/Help";
 // import Settings from "../pages/Settings";
+import Funkari from "../pages/Funkari"
 
 export default function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ export default function AppRoutes() {
           <Route path="/Reward" element={<Reward />} />
           <Route path="/Studio" element={<Studio />} />
           <Route path="/Help" element={<Help />} />
+          <Route path="/Funkari" element={<Funkari />} />
           {/* <Route path="/settings" element={<Settings />} /> */}
         </Route>
       </Routes>
