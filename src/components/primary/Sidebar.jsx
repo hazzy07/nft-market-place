@@ -11,8 +11,9 @@ import {
   Studio,
   HelpIcon,
   Logo,
-  WhiteLogo
+  WhiteLogo,
 } from "../../assets/Route/HomeRoute";
+import { Logopage } from "../../assets/Route/Reward";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -24,21 +25,40 @@ export default function Sidebar() {
 
   const menuItems = [
     { path: "/", icon: <MdOutlineExplore size={20} />, label: "Discover" },
-    { path: "/Profile", icon: <BsGrid1X2 size={18} />, label: "Collection" },
-    { path: "/Tokens", icon: <StokeToken size={20} />, label: "Tokens" },
-    { path: "/Calender", icon: <CiCalendar size={20} />, label: "Drop" },
-    { path: "/Activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
-    { path: "/Reward", icon: <Rewards size={20} />, label: "Rewards" },
-    { path: "/Studio", icon: <Studio size={20} />, label: "Studio" },
+    { path: "/profile", icon: <BsGrid1X2 size={18} />, label: "Collection" },
+    { path: "/tokens", icon: <StokeToken size={20} />, label: "Tokens" },
+    { path: "/calender", icon: <CiCalendar size={20} />, label: "Drop" },
+    { path: "/activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
+    { path: "/reward", icon: <Rewards size={20} />, label: "Rewards" },
+    { path: "/studio", icon: <Studio size={20} />, label: "Studio" },
+    // {
+    //   path: "/account",
+    //   icon: <img src={Logopage} className="rounded-full h-[30px] w-[30px] object-cover " alt="Account" />,
+    //   label: "",
+    // },
+    {
+      path: "/account",
+      icon: (
+        <div className="flex justify-center items-center w-[30px] h-[20px]">
+          <img
+            src={Logopage}
+            alt="Account"
+            className="rounded-full ml-[-10px] w-[35px] h-[35px] object-cover"
+          />
+        </div>
+      ),
+      label: "",
+    },
+
     { divider: true },
-    { path: "/Help", icon: <HelpIcon size={22} />, label: "Support" },
+    { path: "/help", icon: <HelpIcon size={22} />, label: "Support" },
   ];
 
   const currentLogo = location.pathname === "/" ? Logo : WhiteLogo;
 
   return (
     <>
-      {/* Top Navbar (Mobile) */}
+      {/* Mobile Navbar */}
       <div className="md:hidden w-full h-[60px] flex items-center justify-between bg-black text-white px-4 font-inter">
         <button
           onClick={() => setOpen(true)}
@@ -51,7 +71,7 @@ export default function Sidebar() {
         <div className="flex items-center">
           <FiSearch />
           <NavLink to="/" end>
-            <span className="text-[14px] font-[400] text-black rounded-md py-1 px-3 ml-3 bg-white">
+            <span className="text-[14px] font-[400] text-black bg-white rounded-md py-1 px-3 ml-3">
               Connect
             </span>
           </NavLink>
@@ -65,9 +85,8 @@ export default function Sidebar() {
             ? "translate-x-0 w-full overflow-auto"
             : "-translate-x-full md:translate-x-0 md:w-[60px] md:hover:w-[220px]"
         }`}
-        role="navigation"
       >
-        {/* Close button on small screens */}
+        {/* Close Button (Mobile) */}
         <div className="md:hidden flex items-center justify-between px-4 py-4 border-b border-slate-700 font-inter">
           <h2 className="text-lg font-semibold">QSEA</h2>
           <button
@@ -79,12 +98,15 @@ export default function Sidebar() {
           </button>
         </div>
 
+        {/* Sidebar Content */}
         <div className="flex flex-col flex-grow p-2 overflow-y-auto no-scrollbar">
-          <div className="hidden md:flex items-center hover:justify-start ml-1 gap-3 pt-3 mb-6 font-inter text-2xl font-[500] text-center">
+          {/* Logo */}
+          <div className="hidden md:flex items-center ml-1 gap-3 pt-3 mb-6 font-inter text-2xl font-[500] text-center">
             <img src={currentLogo} alt="Logo" className="w-8 h-8" />
             <span className="hidden md:group-hover:block">QSEA</span>
           </div>
 
+          {/* Navigation Links */}
           <nav className="flex flex-col gap-1 font-inter text-sm">
             {menuItems.map((item, index) =>
               item.divider ? (
@@ -97,6 +119,7 @@ export default function Sidebar() {
                   key={item.path}
                   to={item.path}
                   end
+                  onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `flex items-center p-3 rounded-md transition-all duration-300 ${
                       isActive
@@ -104,10 +127,9 @@ export default function Sidebar() {
                         : "text-slate-300 hover:bg-[#2D2E31]"
                     }`
                   }
-                  onClick={() => setOpen(false)}
                 >
                   <div className="flex justify-center">{item.icon}</div>
-                  <span className="ml-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-inter text-[14px]">
+                  <span className="ml-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-[14px]">
                     {item.label}
                   </span>
                 </NavLink>

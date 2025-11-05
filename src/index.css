@@ -28,6 +28,24 @@ body {
   }
 }
 
+@media (max-width: 1260px) {
+   .token {
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     padding-left: 21px;
+     }
+}
+
+@media (max-width: 999px) {
+   .token {
+     flex-wrap: nowrap;
+     align-items: center;
+     justify-content: center;
+     padding-left: 0px;
+     }
+}
+
 @media (max-width: 710px) {
   .swapContainer {
     width: 100%;

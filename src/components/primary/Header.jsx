@@ -3,17 +3,28 @@ import { FiSearch } from "react-icons/fi";
 import { LiaUserCircle } from "react-icons/lia";
 import { NavLink, useLocation } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
+import { IoStar } from "react-icons/io5";
+import Dropdown from "../reusableComponent/Dropdown";
+import { FaRegBell } from "react-icons/fa";
+
+import { Container3, Logopage } from "../../assets/Route/Reward";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
 
-  // Check current route
+  // const isReward = location.pathname === "/reward";
+const isReward =
+  location.pathname === "/reward" ||
+  location.pathname === "/account" ||
+  location.pathname === "/setting";
+
+
   const isFunkari = location.pathname === "/Funkari";
 
   return (
     <header
-      className={` top-0 left-[60px] right-0 z-50 h-[60px] hidden md:flex items-center justify-between px-4 font-interTight border-b-2 border-[#2D2E31] transition-all duration-300 ${
+      className={`top-0 left-[60px] right-0 z-50 h-[60px] hidden md:flex items-center justify-between px-4 font-interTight border-b-2 border-[#2D2E31] transition-all duration-300 ${
         isFunkari ? "bg-black fixed" : "bg-black fixed"
       }`}
     >
@@ -33,18 +44,58 @@ export default function Header() {
         </span>
       </div>
 
-      {/* Right Side */}
-      <div className="flex items-center">
-        <NavLink to="/" end>
-          <span className="text-[14px] font-[400] ml-3 text-white">
-            Connect Wallet
-          </span>
-        </NavLink>
+      {/* Right Side - Changes on /reward */}
+      {isReward ? (
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <img src={Container3} alt="" className="w-12 h-12" />
+            <div className="border-none hover:border flex gap-3 px-3 py-1 font-inter text-[12px] rounded-full bg-[#27262696]">
+              <IoStar fill="#e7b018d0" size={15} />
+              <IoStar size={15} />
+              <IoStar size={15} />
+            </div>
+            <button className="border-none hover:border px-4 py-2 font-inter text-[12px] rounded-full">
+              0%
+            </button>
+          </div>
 
-        <div className="h-6 w-px bg-[#2D2E31] mx-4"></div>
+          <div className="h-[25px]  bg-[#ffffff13]  w-[1px] "></div>
+          <div className="font-inter font-[500] hidden lg:block text-[12px] ">
+            0.00 QTOV
+          </div>
+          <div className="h-[25px] hidden lg:block bg-[#ffffff13] w-[1px] "></div>
+          <div className="font-inter font-[500] hidden lg:block text-[12px] ">
+            0.00 QTOV
+          </div>
+          <div className="h-[25px] hidden lg:block bg-[#ffffff13] w-[1px] "></div>
+          <FaRegBell />
 
-        <LiaUserCircle className="text-white w-7 h-7" />
-      </div>
+         
+          <Dropdown
+            className=" "
+            items={["Select", "Hello"]}
+            placeholder={{ label: "hryugfv..", image: Logopage }}
+            onSelect={(item) => console.log(item)}
+            renderItem={(item) => (
+              <div className="flex items-center gap-2">
+                <span>{item}</span>
+              </div>
+            )}
+          />
+        </div>
+      ) : (
+        <div className="flex items-center">
+          <NavLink to="/" end>
+            <span className="text-[14px] font-[400] ml-3 text-white">
+              Connect Wallet
+            </span>
+          </NavLink>
+
+          <div className="h-6 w-px bg-[#2D2E31] mx-4"></div>
+
+          <LiaUserCircle className="text-white w-7 h-7" />
+        </div>
+      )}
 
       {/* Modal */}
       {isModalOpen && (

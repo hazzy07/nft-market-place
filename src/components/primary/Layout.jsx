@@ -8,7 +8,7 @@ export default function Layout() {
   const location = useLocation();
 
   // Pages that should have no padding-top
-  const noPaddingRoutes = ["/", "/Profile", "/Tokens", "/Calender", "/Activity", "/Reward"];
+  const noPaddingRoutes = ["/", "/profile", "/tokens", "/calender", "/activity", "/reward"];
 
   // Check if current page should remove pt
   const removePadding = noPaddingRoutes.includes(location.pathname);
@@ -17,12 +17,16 @@ export default function Layout() {
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
       <main
-        className={`flex-1 bg-[#111] transition-all mb-7 duration-300 md:ml-[60px] ${
+        className={`flex-1 bg-[#111] pt-11 transition-all lg:mb-7 duration-300 md:ml-[60px] 
+          ${
           removePadding ? "md:pt-[60px]" : "md:pt-[0px]"
-        }`}
+        }
+        
+        `}
       >
         <Header />
-        <Outlet />
+         <Outlet />
+      
         <Footer />
       </main>
     </div>

@@ -10,6 +10,7 @@ import Studio from "../pages/Studio";
 import Help from "../pages/Help";
 // import Settings from "../pages/Settings";
 import Funkari from "../pages/Funkari"
+import Account from "../pages/Account"
 
 export default function AppRoutes() {
   return (
@@ -17,14 +18,15 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Tokens" element={<Tokens />} />
-          <Route path="/Calender" element={<Calendar />} />
-          <Route path="/Activity" element={<Activity />} />
-          <Route path="/Reward" element={<Reward />} />
-          <Route path="/Studio" element={<Studio />} />
-          <Route path="/Help" element={<Help />} />
-          <Route path="/Funkari" element={<Funkari />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/tokens" element={<Tokens />} />
+          <Route path="/calender" element={<Calendar />} />
+          <Route path="/activity" element={<Activity />} />
+          <Route path="/reward" element={<Reward />} />
+          <Route path="/studio" element={<Studio />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/funkari" element={<Funkari />} />
+           <Route path="/account" element={<Account/>} />
           {/* <Route path="/settings" element={<Settings />} /> */}
         </Route>
       </Routes>

@@ -1,9 +1,5 @@
-import React from "react";
-import {
-  FUNLogo,
-  FunkariBack,
- 
-} from "../../assets/Route/FunkariRoute";
+import React, { useState } from "react";
+import { FUNLogo, FunkariBack } from "../../assets/Route/FunkariRoute";
 import { MdOutlineStarRate } from "react-icons/md";
 import { TiStarburst } from "react-icons/ti";
 import { BsExclamationCircle } from "react-icons/bs";
@@ -14,9 +10,7 @@ import { CiShare2 } from "react-icons/ci";
 import { HiDotsHorizontal } from "react-icons/hi";
 import TabsStructure from "../reusableComponent/TabsStructure";
 import ItemTabContent from "./ItemTabContent";
-
-
-
+import { NavLink } from "react-router-dom";
 export default function HeroSection() {
   const tabs = [
     {
@@ -45,13 +39,22 @@ export default function HeroSection() {
     },
   ];
 
+  const [activeModal, setActiveModal] = useState(null);
+
+  const handleOpen = (modalName) => setActiveModal(modalName);
+  const handleClose = () => setActiveModal(null);
+
   return (
     <>
       <div className="relative  ">
-        <img src={FunkariBack} alt="" className="w-full min-h-[300px] object-cover " />
+        <img
+          src={FunkariBack}
+          alt=""
+          className="w-full min-h-[300px] object-cover "
+        />
         <div className="absolute bottom-0 left-0 right-0 h-[160px] bg-gradient-to-t from-[#111] to-transparent"></div>
 
-        <div className="absolute bottom-0  left-10 flex justify-between lg:flex-row flex-col gap-y-4 lg:items-center right-10">
+        <div className="absolute bottom-0 left-2 md:left-10 flex justify-between lg:flex-row flex-col gap-y-4 lg:items-center right-10">
           <div className="flex flex-wrap gap-3 items-center">
             <img src={FUNLogo} alt="" className="" />
             <div className="flex flex-col">
@@ -66,14 +69,71 @@ export default function HeroSection() {
                 {/* Divider */}
                 <div className="h-5 w-[1px] bg-[#515152bd]"></div>
 
-                {/* Right Section */}
-                <div className="flex items-center gap-3">
-                  <BsExclamationCircle className="cursor-pointer" />
-                  <MdContentCopy className="cursor-pointer" />
-                  <IoGlobeOutline className="cursor-pointer" />
-                  <FaXTwitter className="cursor-pointer" />
-                  <CiShare2 className="cursor-pointer" />
-                  <HiDotsHorizontal className="cursor-pointer" />
+                
+
+                <div className="relative flex items-center gap-3 text-white">
+                  <BsExclamationCircle
+                    size={19}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen("info")}
+                  />
+                  <MdContentCopy
+                    size={19}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen("copy")}
+                  />
+                  <IoGlobeOutline
+                    size={19}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen("globe")}
+                  />
+
+                  <NavLink to="https://x.com/" end>
+                    <FaXTwitter size={19} className="cursor-pointer " />
+                  </NavLink>
+
+                  <CiShare2
+                    size={20}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen("share")}
+                  />
+                  <HiDotsHorizontal
+                    size={19}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen("more")}
+                  />
+
+                  {/* Reusable Modal */}
+                  {activeModal && (
+                    <div
+                      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+                      onClick={handleClose}
+                    >
+                      <div
+                        className="bg-[#111] text-white rounded-lg shadow-lg p-6 w-[90%] max-w-sm relative"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          onClick={handleClose}
+                          className="absolute top-2 right-2 text-gray-400 hover:text-white"
+                        >
+                          ✕
+                        </button>
+                        {activeModal === "info" && (
+                          <p>Information details go here.</p>
+                        )}
+                        {activeModal === "copy" && <p>Copied content modal.</p>}
+                        {activeModal === "globe" && (
+                          <p>Language or region settings.</p>
+                        )}
+
+                        {activeModal === "share" && <p>Share options modal.</p>}
+                        {activeModal === "more" && (
+                          <p>More actions available here.</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -147,7 +207,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div>
         <div className="">
           <TabsStructure
             tabs={tabs}
@@ -164,7 +223,7 @@ export default function HeroSection() {
             onChange={(index) => console.log("Active tab:", index)}
           />
         </div>
-      </div>
+      
     </>
   );
 }

@@ -15,7 +15,7 @@ import { CiGrid41 } from "react-icons/ci";
 import { MdGridOn } from "react-icons/md";
 import { LuRows3, LuRows4 } from "react-icons/lu";
 import Dropdown from "../reusableComponent/Dropdown";
-
+import { NavLink } from "react-router-dom";
 import { CiSettings } from "react-icons/ci";
 import { TiStarburst } from "react-icons/ti";
 import { BsExclamationCircle } from "react-icons/bs";
@@ -25,7 +25,9 @@ import { FaXTwitter } from "react-icons/fa6";
 import { CiShare2 } from "react-icons/ci";
 import { HiDotsHorizontal } from "react-icons/hi";
 import DetailModalContent from "./DetailModalContent";
-
+import { GoGraph } from "react-icons/go";
+import { RiStackFill } from "react-icons/ri";
+import DetailTab from "./DetailTab"
 const nftData = [
   {
     id: 1,
@@ -92,7 +94,7 @@ const nftData = [
 const Modaltabs = [
   {
     label: "Detail",
-    content: <DetailModalContent />,
+    content: <DetailTab />,
   },
   {
     label: "Orders",
@@ -107,6 +109,20 @@ const Modaltabs = [
 export default function ModalSection({ showLeft, setShowLeft }) {
   const [gridCols, setGridCols] = useState("lg:grid-cols-5 sm:grid-cols-2");
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const [activeMiniModal, setActiveMiniModal] = useState(null);
+
+  const MinihandleOpen = (modalName) => setActiveMiniModal(modalName);
+  const MinihandleClose = () => setActiveMiniModal(null);
+
+  const [activeModal, setActiveModal] = useState(null);
+
+  const handleOpen = (modalName) => setActiveModal(modalName);
+  const handleClose = () => setActiveModal(null);
+
+  const [value, setValue] = useState("");
+
+  const isInvalid = value === "1";
 
   return (
     <div className="bg-transparent">
@@ -123,7 +139,7 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           />
         </div>
 
-        <div className="flex xl:flex-wrap gap-3">
+        <div className="flex xl:flex-nowrap flex-wrap gap-3">
           <Dropdown
             items={["low to high", "Oldest", "Trending"]}
             placeholder="high to low"
@@ -142,7 +158,7 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           ].map((opt) => (
             <div
               key={opt.id}
-              className={`p-2  rounded-md cursor-pointer ${
+              className={`p-1  rounded-md cursor-pointer ${
                 gridCols === opt.id
                   ? "bg-[#FFFFFF10] border border-[#ffffff15] text-white"
                   : "text-gray-300 hover:text-yellow-300"
@@ -154,17 +170,18 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           ))}
 
           <div
-            className={`p-2 border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
+            className={`p-1 flex items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
                    hover:text-yellow-300
               `}
           >
             <CiSettings />
           </div>
           <div
-            className={`px-2 flex items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
+            className={`px-2 flex gap-2 items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
                    hover:text-yellow-300
               `}
           >
+            <GoGraph />
             Insight
           </div>
         </div>
@@ -233,9 +250,8 @@ export default function ModalSection({ showLeft, setShowLeft }) {
 
       {/* Tailwind Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-          <div className="bg-[#111] rounded-lg w-[90%] max-w-6xl text-white relative overflow-hidden">
-            {/* Top Thumbnail Bar */}
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]">
+          <div className="bg-[#111] rounded-lg w-[96%] max-w-7xl text-white relative overflow-hidden">
             <div className="sticky top-0 z-10 border-b border-[#ffffff33] bg-black flex items-center justify-between px-4 py-3">
               <div
                 id="thumb-scroll"
@@ -265,10 +281,9 @@ export default function ModalSection({ showLeft, setShowLeft }) {
               </button>
             </div>
 
-            {/* Main Scrollable Content */}
+            {/* Main */}
             <div className="p-6 overflow-y-auto no-scrollbar max-h-[85vh]">
               <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-                {/* Left Image */}
                 <div className="flex md:order-1 order-2 justify-center items-center bg-black rounded-md">
                   <img
                     src={selectedItem.image}
@@ -277,22 +292,262 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                   />
                 </div>
 
-                {/* Right Info */}
+                {/* Right */}
                 <div className="text-white md:order-2 order-1 flex flex-col gap-5">
                   <div>
                     <h2 className="text-2xl font-semibold mb-3">
                       {selectedItem.name}
                     </h2>
-                    <div className="flex items-center gap-3">
-                      <img src={FUNLogo} alt="" className="w-8 rounded-full" />
-                      <span className="text-gray-400 text-sm">
-                        Owned by{" "}
-                        <span className="text-white">0xab51...cd26</span>
-                      </span>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={FUNLogo}
+                          alt=""
+                          className="w-8 rounded-full"
+                        />
+                        <span className="text-gray-400 text-sm">
+                          Owned by{" "}
+                          <span className="text-white">0xab51...cd26</span>
+                        </span>
+                      </div>
+
+                      <div className="relative flex items-center gap-3 text-white">
+                        <MdContentCopy
+                          size={19}
+                          className="cursor-pointer"
+                          onClick={() => handleOpen("copy")}
+                        />
+                        <IoGlobeOutline
+                          size={19}
+                          className="cursor-pointer"
+                          onClick={() => handleOpen("globe")}
+                        />
+                        <div className="h-5 w-[1px] bg-[#515152bd]"></div>
+                        <NavLink to="https://x.com/" end>
+                          <FaXTwitter size={19} className="cursor-pointer " />
+                        </NavLink>
+                        <CiShare2
+                          size={19}
+                          className="cursor-pointer"
+                          onClick={() => handleOpen("share")}
+                        />
+                        <HiDotsHorizontal
+                          size={19}
+                          className="cursor-pointer"
+                          onClick={() => MinihandleOpen("more")}
+                        />
+
+                        {activeModal && (
+                          <div
+                            className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+                            onClick={handleClose}
+                          >
+                            <div
+                              className="bg-[#111] text-white rounded-lg shadow-lg p-6 w-[90%] max-w-sm relative"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <button
+                                onClick={handleClose}
+                                className="absolute top-2 right-2 text-gray-400 hover:text-white"
+                              >
+                                ✕
+                              </button>
+                              {activeModal === "info" && (
+                                <p>Information details go here.</p>
+                              )}
+                              {activeModal === "copy" && (
+                                <p>Copied content modal.</p>
+                              )}
+                              {activeModal === "globe" && (
+                                <p>Language or region settings.</p>
+                              )}
+
+                              {activeModal === "share" && (
+                                <p>Share options modal.</p>
+                              )}
+                              {activeModal === "more" && (
+                                <p>More actions available here.</p>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Reusable Mini Modal */}
+                        {activeMiniModal && (
+                          <div
+                            className="fixed inset-0 bg-black/50 z-[10000] flex items-end justify-center"
+                            onClick={MinihandleClose}
+                          >
+                            <div
+                              className="bg-[#151515] text-white shadow-lg  w-full max-w-[100%] relative"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <div className="flex p-6 items-center justify-end  pb-3 mb-4">
+                                <button
+                                  onClick={MinihandleClose}
+                                  className="text-gray-400 relative right-0 hover:text-white text-xl"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+
+                             
+
+                              {activeMiniModal === "more" && (
+                                <>
+                                  <div className="flex  mx-auto justify-center items-center flex-col w-full max-w-6xl">
+                                    <div className="flex w-full mt-[-50px] justify-between items-center">
+                                      <p className="font-inter text-[20px] font-medium">
+                                        Create Item Offer
+                                      </p>
+
+                                      <div className="flex items-center gap-3">
+                                        <p className="font-space text-[12px] text-gray-300">
+                                          Set Price To
+                                        </p>
+                                        <div className="px-3 py-1 bg-black border border-[#ffffff42] rounded-md text-sm text-white">
+                                          Top Offer
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex mt-4 w-full justify-between items-center">
+                                      <div className="font-inter flex items-center gap-3 text-[#ACADAE] text-[12px] font-medium">
+                                        <RiStackFill size={21} />1 item
+                                      </div>
+
+                                      <div className="flex items-center gap-11">
+                                        <p className="font-inter text-[#ACADAE] text-[12px] font-medium">
+                                          FLOOR
+                                        </p>
+
+                                        <p className="font-inter text-[#ACADAE] text-[12px] font-medium">
+                                          TOP OFFER
+                                        </p>
+
+                                        <p className="font-inter text-[#ACADAE] text-[12px] font-medium">
+                                          Cost
+                                        </p>
+
+                                        <p className="font-inter text-[#ACADAE] text-[12px] font-medium">
+                                          OFFER TOTAL
+                                        </p>
+
+                                        <p className="font-inter text-[#ACADAE] text-[12px] font-medium">
+                                          OFFERED AT
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex border-b pb-9 border-[#ffffff42] mt-7 w-full justify-between items-center">
+                                      <div className="font-inter flex items-center gap-3  text-[14px] font-medium">
+                                        <img
+                                          src={Fun64}
+                                          alt=""
+                                          className="rounded-md w-10 h-10"
+                                        />
+                                        Funkari#82
+                                      </div>
+
+                                      <div className="flex items-center font-inter gap-7">
+                                        <p className="">0.099 QTOV</p>
+
+                                        <p className="">0.784 QTOV</p>
+
+                                        <p className="">0.96 QTOV</p>
+
+                                        <p className="">1.00 QTOV</p>
+
+                                        <div className="flex flex-col items-end">
+                                          <div className="flex gap-2 items-center">
+                                            <div className="border px-1 py-1 border-[#ffffff2c] bg-black rounded-md">
+                                              <CiSettings size={19} />
+                                            </div>
+                                            <div
+                                              className={`flex items-center border bg-black rounded-md overflow-hidden ${
+                                                isInvalid
+                                                  ? "border-red-500"
+                                                  : "border-[#ffffff42]"
+                                              }`}
+                                            >
+                                              <input
+                                                type="number"
+                                                placeholder="0"
+                                                value={value}
+                                                onChange={(e) =>
+                                                  setValue(e.target.value)
+                                                }
+                                                className="w-[30px] bg-transparent text-white text-center focus:outline-none"
+                                              />
+                                              <span className="px-2 py-1 text-white text-sm ">
+                                                QTOV
+                                              </span>
+                                            </div>
+                                          </div>
+                                          {isInvalid && (
+                                            <p className="text-red-500 text-[12px] text-end font-medium">
+                                              Offer exceeds wallet balance by
+                                              1.00 QTOV/QTOV
+                                            </p>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex border-b border-[#ffffff42] py-5  w-full justify-between items-center">
+                                      <p className="font-inter gap-3  text-[14px] font-medium">
+                                        Total offer value
+                                      </p>
+
+                                      <p className="font-inter gap-3  text-[14px] font-medium">
+                                        {" "}
+                                        <span className="text-gray-400  ">
+                                          ($3,804.44)
+                                        </span>{" "}
+                                        0.099 QTOV
+                                      </p>
+                                    </div>
+
+                                    <div className="flex  py-5  w-full justify-between items-center">
+                                      <p className="font-inter text-gray-400 gap-3  text-[14px] font-medium">
+                                        Floor difference
+                                      </p>
+
+                                      <p className="font-inter text-gray-400 gap-3  text-[14px] font-medium">
+                                        1.2% above floor
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="flex border-t border-[#ffffff42]  py-5 bg-[#1B1D1F]  mx-auto  flex-col ">
+                                    <div className="flex gap-2 mx-auto    max-w-6xl w-full items-end justify-end">
+                                      <div className="w-[150px] text-black bg-[#FFFFFF] py-1 text-center font-inter rounded-md  text-sm">
+                                        Review item offer
+                                      </div>
+
+                                      <Dropdown
+                                        items={[
+                                          "Today",
+                                          "This Week",
+                                          "This Month",
+                                        ]}
+                                        placeholder="30 days"
+                                        onSelect={(item) =>
+                                          console.log("Chosen:", item)
+                                        }
+                                        className="w-[150px] bg-black rounded-md font-inter  text-sm"
+                                      />
+                                    </div>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Token Details */}
                   <div className="flex flex-wrap gap-2">
                     <div className="px-2 py-1 border border-[#ffffff25] rounded-md text-[12px]">
                       ERC721
@@ -306,7 +561,6 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                     </div>
                   </div>
 
-                  {/* Price Box */}
                   <div className="bg-black p-4 rounded-md border border-[#ffffff1a]">
                     <div className="flex justify-between text-gray-400 text-sm mb-4">
                       <div>
@@ -328,7 +582,7 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                       <div className="flex items-center gap-2">
                         <h1 className="text-[20px]">0.99 QTOV</h1>
                         <p className="text-[12px] text-gray-400">($3,764.84)</p>
-                        <div className="border border-[#ffffff1c] text-[12px] text-gray-400 px-2 py-[2px] rounded">
+                        <div className="border border-[#ffffff1c] text-[10px] text-gray-400 px-2 py-[2px] rounded">
                           ENDING IN WEEK
                         </div>
                       </div>
@@ -344,16 +598,15 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                     </div>
                   </div>
 
-                  {/* Tabs Section */}
                   <TabsStructure
                     tabs={Modaltabs}
                     defaultTab={0}
                     classNames={{
                       tabList: "",
                       activeTab:
-                        "relative text-white after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-[59px] after:border-b-[2px] font-inter font-[400] text-[14px] after:border-white",
+                        "relative text-white after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 px-0 after:w-[39px] after:border-b-[2px] font-inter font-[400] text-[14px] after:border-white",
                       inactiveTab:
-                        "text-gray-400 font-inter font-[400] text-[14px] hover:text-white",
+                        "text-gray-400  font-inter font-[400] text-[14px] hover:text-white",
                       content: "",
                     }}
                   />
