@@ -124,7 +124,7 @@ export default function Sidebar() {
                     `flex items-center p-3 rounded-md transition-all duration-300 ${
                       isActive
                         ? "bg-[#2D2E31] text-white border-l-4 border-white md:border-l-0"
-                        : "text-slate-300 hover:bg-[#2D2E31]"
+                        : "text-slate-300  hover:bg-[#2D2E31]"
                     }`
                   }
                 >

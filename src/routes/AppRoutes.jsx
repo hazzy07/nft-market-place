@@ -8,9 +8,14 @@ import Activity from "../pages/Activity";
 import Reward from "../pages/Reward";
 import Studio from "../pages/Studio";
 import Help from "../pages/Help";
-// import Settings from "../pages/Settings";
-import Funkari from "../pages/Funkari"
-import Account from "../pages/Account"
+import Funkari from "../pages/Funkari";
+import Account from "../pages/Account";
+
+import HelpDeveloper from "../components/help/HelpDeveloper";
+import HelpContent from "../components/help/HelpContent";
+import HelpMail from "../components/help/HelpMail";
+import HelpVerification from "../components/help/HelpVarification";
+import HelpWallet from "../components/help/HelpWallet";
 
 export default function AppRoutes() {
   return (
@@ -24,10 +29,18 @@ export default function AppRoutes() {
           <Route path="/activity" element={<Activity />} />
           <Route path="/reward" element={<Reward />} />
           <Route path="/studio" element={<Studio />} />
-          <Route path="/help" element={<Help />} />
+
+          {/* HELP nested routes */}
+          <Route path="/help" element={<Help />}>
+            <Route index element={<HelpContent />} />
+            <Route path="developer" element={<HelpDeveloper />} />
+            <Route path="wallet" element={<HelpWallet />} />
+            <Route path="verification" element={<HelpVerification />} />
+            <Route path="mail" element={<HelpMail />} />
+          </Route>
+
           <Route path="/funkari" element={<Funkari />} />
-           <Route path="/account" element={<Account/>} />
-          {/* <Route path="/settings" element={<Settings />} /> */}
+          <Route path="/account" element={<Account />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -13,12 +13,10 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
 
-  // const isReward = location.pathname === "/reward";
-const isReward =
-  location.pathname === "/reward" ||
-  location.pathname === "/account" ||
-  location.pathname === "/setting";
-
+  const isReward =
+    location.pathname === "/reward" ||
+    location.pathname === "/account" ||
+    location.pathname.startsWith("/help");
 
   const isFunkari = location.pathname === "/Funkari";
 
@@ -70,7 +68,6 @@ const isReward =
           <div className="h-[25px] hidden lg:block bg-[#ffffff13] w-[1px] "></div>
           <FaRegBell />
 
-         
           <Dropdown
             className=" "
             items={["Select", "Hello"]}

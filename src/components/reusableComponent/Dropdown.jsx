@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoCaretDownOutline } from "react-icons/io5";
 
-const Dropdown = ({ items, placeholder, onSelect, className = "" }) => {
+const Dropdown = ({
+  items,
+  placeholder,
+  onSelect,
+  className = "",
+  noBorder = false,
+  paddingY = "py-2",
+}) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
   const [dropUp, setDropUp] = useState(false);
@@ -22,7 +29,6 @@ const Dropdown = ({ items, placeholder, onSelect, className = "" }) => {
       const rect = ref.current.getBoundingClientRect();
       const spaceBelow = window.innerHeight - rect.bottom;
       const spaceAbove = rect.top;
-      // Flip up if not enough space below
       setDropUp(spaceBelow < 150 && spaceAbove > spaceBelow);
     }
     setOpen(!open);
@@ -38,9 +44,9 @@ const Dropdown = ({ items, placeholder, onSelect, className = "" }) => {
     <div className={`relative inline-block text-left ${className}`} ref={ref}>
       <div
         onClick={handleToggle}
-        className="flex gap-1 justify-between items-center px-2 py-1 bg-transparent border border-[#FFFFFF10] text-gray-200 rounded-md cursor-pointer hover:border-gray-500 transition-all"
+        className={`flex gap-1 justify-between items-center px-2 ${paddingY} bg-transparent text-gray-200 rounded-md cursor-pointer transition-all 
+          ${noBorder ? "" : "border border-[#FFFFFF10] hover:border-gray-500"}`}
       >
-        {/* <span className="truncate">{selected || placeholder}</span> */}
         {selected ? (
           <span className="truncate">{selected}</span>
         ) : (
@@ -52,7 +58,9 @@ const Dropdown = ({ items, placeholder, onSelect, className = "" }) => {
                 className="w-5 h-5 rounded-full"
               />
             )}
-            <span className="font-inter font-[400] text-[12px] ">{placeholder?.label || placeholder}</span>
+            <span className="font-inter font-[400] text-[14px]">
+              {placeholder?.label || placeholder}
+            </span>
           </div>
         )}
 
@@ -74,7 +82,7 @@ const Dropdown = ({ items, placeholder, onSelect, className = "" }) => {
             <div
               key={idx}
               onClick={() => handleClick(item)}
-              className="px-3 py-2 text-gray-200 hover:bg-[#2b2b2b] hover:text-yellow-300 cursor-pointer"
+              className="px-3 py-2 font-inter text-[14px] text-gray-200 hover:bg-[#2b2b2b] hover:text-yellow-300 cursor-pointer"
             >
               {item}
             </div>
