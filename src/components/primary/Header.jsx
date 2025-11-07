@@ -13,6 +13,15 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
 
+  const [openModal, setOpenModal] = useState(null);
+
+  const handleSelect = (item) => {
+    if (item.label === "Language") setOpenModal("language");
+    else if (item.label === "Shortcuts") setOpenModal("shortcuts");
+  };
+
+  const closeModal = () => setOpenModal(null);
+
   const isReward =
     location.pathname === "/reward" ||
     location.pathname === "/account" ||
@@ -69,16 +78,151 @@ export default function Header() {
           <FaRegBell />
 
           <Dropdown
-            className=" "
-            items={["Select", "Hello"]}
-            placeholder={{ label: "hryugfv..", image: Logopage }}
-            onSelect={(item) => console.log(item)}
+            className=""
+            items={[
+              { label: "Language", image: Logopage },
+              { label: "Shortcuts", image: Logopage },
+            ]}
+            placeholder={{ label: "Select option", image: Logopage }}
+            onSelect={handleSelect}
             renderItem={(item) => (
               <div className="flex items-center gap-2">
-                <span>{item}</span>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-5 h-5 rounded"
+                />
+                <span>{item.label}</span>
               </div>
             )}
           />
+
+          {/* Modal for Language */}
+          {openModal === "language" && (
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
+              <div className="bg-[#1a1a1a] w-full max-w-[450px] rounded-xl shadow-lg relative text-center border border-[#2D2E31]">
+                <div className=" flex justify-between items-center p-6">
+                  <h2 className="text-white text-lg font-semibold ">
+                    Language
+                  </h2>
+                  <button
+                    onClick={closeModal}
+                    className=" border border-[#ffffff1f] rounded-full   py-1 px-[10px]  text-2xl"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className=" text-start pb-6 px-8">
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    English
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    Espanol{" "}
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    Deutsch
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    Francais
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    {" "}
+                    日本語{" "}
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    한국어
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    {" "}
+                    中文 (简体){" "}
+                  </p>
+                  <p className="font-inter text-[14px] font-[400] py-3 ">
+                    {" "}
+                    中文 (繁体){" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Modal for Shortcuts */}
+          {openModal === "shortcuts" && (
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
+              <div className="bg-[#1a1a1a] w-full max-w-[550px] max-h-[80vh] rounded-xl shadow-lg relative text-center border border-[#2D2E31] flex flex-col">
+                <div className="flex justify-between items-center p-6 pb-0">
+                  <h2 className="text-white text-lg font-semibold">
+                    Shortcuts
+                  </h2>
+                  <button
+                    onClick={closeModal}
+                    className="border border-[#ffffff1f] rounded-full py-1 px-[10px] text-2xl"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="text-start  overflow-y-auto no-scrollbar p-6 flex-1 pb-6 px-8">
+                  {[
+                    {
+                      label: "Discover",
+                      keys: [
+                        ["G", "then", "D"],
+                        ["G", "then", "H"],
+                      ],
+                    },
+                    { label: "Stats", keys: [["G", "then", "S"]] },
+                    { label: "Activity", keys: [["G", "then", "A"]] },
+                    {
+                      label: "Reward",
+                      keys: [
+                        ["G", "then", "R"],
+                        ["G", "then", "L"],
+                      ],
+                    },
+                    { label: "Profile", keys: [["G", "then", "P"]] },
+                    {
+                      label: "Toggle Collector / Pro Mode",
+                      keys: [["T", "then", "M"]],
+                    },
+                    { label: "Toggle Currency", keys: [["T", "then", "C"]] },
+                    {
+                      label: "Search",
+                      keys: [["/", "OR", "CTRL", "then", "K"]],
+                    },
+                    { label: "Shortcut help", keys: [["?"]] },
+                    { label: "Previous item", keys: [["J", "OR", "arr"]] },
+                    { label: "Next item", keys: [["K", "OR", "H"]] },
+                    { label: "Exit item page", keys: [["ESC"]] },
+                  ].map((shortcut, i) => (
+                    <div key={i} className="flex items-center justify-between ">
+                      <p className="font-inter text-[14px] font-[400] py-4">
+                        {shortcut.label}
+                      </p>
+                      <div className="flex gap-2 flex-row font-[12px] font-inter font-[400] items-center">
+                        {shortcut.keys.map((group, j) => (
+                          <React.Fragment key={j}>
+                            {group.map((key, k) =>
+                              ["then", "OR"].includes(key) ? (
+                                <span key={k}>{key}</span>
+                              ) : (
+                                <div
+                                  key={k}
+                                  className="bg-black rounded px-[6px] border border-[#ffffff25]"
+                                >
+                                  {key}
+                                </div>
+                              )
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex items-center">

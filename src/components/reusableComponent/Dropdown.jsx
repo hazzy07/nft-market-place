@@ -5,12 +5,13 @@ const Dropdown = ({
   items,
   placeholder,
   onSelect,
+  renderItem,
   className = "",
   noBorder = false,
   paddingY = "py-2",
 }) => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(null);
   const [dropUp, setDropUp] = useState(false);
   const ref = useRef(null);
 
@@ -48,7 +49,16 @@ const Dropdown = ({
           ${noBorder ? "" : "border border-[#FFFFFF10] hover:border-gray-500"}`}
       >
         {selected ? (
-          <span className="truncate">{selected}</span>
+          <div className="flex items-center gap-2 truncate">
+            {selected.image && (
+              <img
+                src={selected.image}
+                alt={selected.label}
+                className="w-5 h-5 rounded-full"
+              />
+            )}
+            <span>{selected.label}</span>
+          </div>
         ) : (
           <div className="flex items-center gap-2">
             {placeholder?.image && (
@@ -82,9 +92,9 @@ const Dropdown = ({
             <div
               key={idx}
               onClick={() => handleClick(item)}
-              className="px-3 py-2 font-inter text-[14px] text-gray-200 hover:bg-[#2b2b2b] hover:text-yellow-300 cursor-pointer"
+              className="px-3 py-2 font-inter text-[14px] text-gray-200 hover:bg-[#2b2b2b] hover:text-yellow-300 cursor-pointer flex items-center gap-2"
             >
-              {item}
+              {renderItem ? renderItem(item) : <span>{item.label}</span>}
             </div>
           ))}
         </div>

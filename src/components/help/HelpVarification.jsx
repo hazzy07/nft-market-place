@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HelpVerification() {
   return (
-    <div className="bg-black p-8 shadow-lg min-h-screen">
+    <div className="bg-black p-4 sm:p-8 shadow-lg min-h-screen">
       <h2 className="text-[24px] font-[400] font-inte ">Email Notifications</h2>
       <p className="font-[400] text-[#ACADAE] mt-2 text-[14px] font-inter mb-3">
         A verified account has a badge that appears next to the account name.

@@ -30,7 +30,7 @@ export default function Sidebar() {
     { path: "/calender", icon: <CiCalendar size={20} />, label: "Drop" },
     { path: "/activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
     { path: "/reward", icon: <Rewards size={20} />, label: "Rewards" },
-    { path: "/studio", icon: <Studio size={20} />, label: "Studio" },
+    { path: "/funkari", icon: <Studio size={20} />, label: "Studio" },
     // {
     //   path: "/account",
     //   icon: <img src={Logopage} className="rounded-full h-[30px] w-[30px] object-cover " alt="Account" />,
