@@ -31,7 +31,7 @@ export default function TokenTables({listView}) {
   ];
 
   return (
-    <div className="py-6 pr-6 pl-6 lg:pl-0">
+    <div className="py-6 pr-6 pb-14 md:pb-5 pl-6 lg:pl-0">
       <div className="flex items-center justify-between">
         <TabsStructure
           tabs={tabData}

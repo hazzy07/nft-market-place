@@ -34,7 +34,7 @@ const ToggleSwitch = ({ label }) => {
       <button
         onClick={() => setEnabled(!enabled)}
         className={`w-10 h-5 rounded-full transition-colors duration-300 ${
-          enabled ? "bg-yellow-300" : "bg-[#3f3f46]"
+          enabled ? "bg-black" : "bg-[#3f3f46]"
         } relative`}
       >
         <span

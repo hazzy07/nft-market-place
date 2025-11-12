@@ -12,8 +12,7 @@ import {
   Container8,
   Container9,
 } from "../../assets/Route/Reward";
-import { PiCaretLeftBold } from "react-icons/pi";
-import { RxCaretRight } from "react-icons/rx";
+import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiTreasureChestBold } from "react-icons/pi";
 import { LuBox } from "react-icons/lu";
 
@@ -42,7 +41,7 @@ export default function ActiveChest() {
             </button>
 
             <div className="flex mt-5 gap-2">
-              <div className="flex p-4 border rounded-full items-center justify-center">
+              <div className="flex m-[3px] border-[#4f5052] px-[13px] border rounded-full items-center justify-center">
                 <PiCaretLeftBold />
               </div>
 
@@ -61,8 +60,8 @@ export default function ActiveChest() {
                 ))}
               </div>
 
-              <div className="flex p-3 border rounded-full items-center justify-center">
-                <RxCaretRight size={25} />
+              <div className="flex m-[3px] border-[#4f5052] px-[13px] border rounded-full items-center justify-center">
+                <PiCaretRightBold />
               </div>
             </div>
 

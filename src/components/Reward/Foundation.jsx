@@ -7,12 +7,37 @@ import { G482, C1470, C14514, D2234, C9027 } from "../../assets/Route/Reward";
 
 export default function Foundation() {
   const items = [
-    { img: G482, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
-    { img: G482, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
-    { img: C1470, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
-    { img: C1470, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
-    { img: D2234, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
-    { img: C9027, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
+    {
+      img: G482,
+      name: "Doodle #482",
+      detail: "Doodles",
+      time: "31 minutes ago",
+    },
+    {
+      img: G482,
+      name: "Doodle #2234",
+      detail: "Doodle",
+      time: "31 minutes ago",
+    },
+    {
+      img: C1470,
+      name: "Critters Quest Blind Box",
+      detail: "Critters Quest Blind Box",
+      time: "31 minutes ago",
+    },
+    {
+      img: C1470,
+      name: "Critters Quest Blind Box",
+      detail: "Critters Quest Blind Box",
+      time: "31 minutes ago",
+    },
+    {
+      img: D2234,
+      name: "Potatoz #9027",
+      detail: "Memeland potatoz",
+      time: "31 minutes ago",
+    },
+    { img: C9027, name: "#14514", detail: "HV-MTL", time: "31 minutes ago" },
     { img: D2234, name: "ITEM", detail: "ITEM", time: "31 minutes ago" },
   ];
 
@@ -75,11 +100,11 @@ export default function Foundation() {
             inside at the end of the wave.
           </p>
 
-          <div className="flex  mt-4 items-center rounded-md font-[400] text-[12px] gap-3 bg-[#17181A]">
+          <div className="flex border  border-[#2D2E31]  mt-4 items-center justify-between rounded-md font-[400] text-[12px] gap-3 bg-[#17181A]">
             <div className="flex font-inter items-center whitespace-nowrap px-2 justify-center">
               END IN
             </div>
-            <div className="flex flex-wrap lg:flex-nowrap gap-2 py-3 px-2 items-center">
+            <div className="flex flex-wrap  border-l  border-[#2D2E31] lg:flex-nowrap gap-2 py-3 px-2 items-center">
               <div
                 className={`flex items-center flex-col justify-center border border-[#4f5052] rounded-md bg-black px-2 pb-1`}
               >
@@ -130,118 +155,36 @@ export default function Foundation() {
         <div className="bg-black w-full">
           <div className="grid border-t items-center p-3   border-[#2D2E31] grid-cols-[3fr_1fr]">
             <p className="font-space font-[400] text-[12px] ">ITEM</p>
-            <p className="font-space font-[400] text-[12px] ">TIME</p>
+            <p className="font-space font-[400] text-end text-[12px] ">TIME</p>
           </div>
 
-          {/* <div className=" lg:h-[300px] no-scrollbar overflow-y-auto ">
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={G482} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={G482} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={C1470} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={C1470} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={D2234} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={C9027} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid border-t p-3 items-center justify-between border-[#2D2E31] grid-cols-[3fr_1fr]">
-              <div className="flex gap-2 items-center">
-                <img src={D2234} alt="" className="w-10 h-10 rounded-md" />
-                <div>
-                  <p className="font-space font-[400] text-[14px] ">ITEM</p>
-                  <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px] ">
-                    ITEM <TiStarburst fill="white" />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
+       
 
           <div className="lg:h-[300px] no-scrollbar overflow-y-auto">
             {items.map((item, i) => (
               <div
                 key={i}
-                className="grid border-t p-3 items-center  border-[#2D2E31] grid-cols-[3fr_1fr]"
+                className="grid  border-t p-3 items-center  border-[#2D2E31] grid-cols-[3fr_1fr]"
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex font-inter gap-2 items-center">
                   <img
                     src={item.img}
                     alt={item.name}
                     className="w-10 h-10 rounded-md"
                   />
                   <div>
-                    <p className="font-space font-[400] text-[14px]">
+                    <p className=" font-[400] text-[14px]">
                       {item.name}
                     </p>
-                    <div className="font-space flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px]">
+                    <div className=" flex items-center gap-2 font-[400] text-[#ACADAE] text-[13px]">
                       {item.detail} <TiStarburst fill="white" />
                     </div>
                   </div>
                 </div>
 
-                <div className="whitespace-nowrap font-inter text-[14px] ">{item.time}</div>
+                <div className="whitespace-nowrap font-inter text-[14px] ">
+                  {item.time}
+                </div>
               </div>
             ))}
           </div>

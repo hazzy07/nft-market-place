@@ -10,7 +10,7 @@ import {
 
 export default function ImageScroll() {
   const cardImages = [
-     FooterSlide5,
+    FooterSlide5,
     FooterSlide,
     FooterSlide2,
     FooterSlide1,
@@ -31,27 +31,28 @@ export default function ImageScroll() {
         </p>
       </div>
 
-      {/* Scrollable Cards */}
-      <div className="flex items-center gap-4 max-w-[1240px] overflow-x-auto no-scrollbar p-2">
-        {cardImages.map((img, index) => (
-          <div
-            key={index}
-            className="relative min-w-[220px] h-[180px] rounded-lg overflow-hidden bg-[#2a2b2c]"
-          >
-            <img
-              src={img}
-              alt={`slide-${index}`}
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute bottom-0 left-0 h-3 w-1/2 bg-[#2a2b2c]/70 rounded">
-              {/* overlay bar */}
+      <div className="overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-4 w-[650px] p-2">
+          {cardImages.map((img, index) => (
+            <div
+              key={index}
+              className="relative min-w-[220px] h-[180px] rounded-lg overflow-hidden bg-[#2a2b2c]"
+            >
+              <img
+                src={img}
+                alt={`slide-${index}`}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 h-3 w-1/2 bg-[#2a2b2c]/70 rounded"></div>
+              <div className="absolute bottom-0 w-full left-0 p-2 text-white bg-[#2a2b2c] text-sm font-medium">
+                Upcoming Mint #{index + 1}
+              </div>
             </div>
-            <div className="absolute bottom-0 w-[100%] left-0 p-2 text-white bg-[#2a2b2c] text-sm font-medium">
-              Upcoming Mint #{index + 1}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+
+      {/* Scrollable Cards */}
     </div>
   );
 }

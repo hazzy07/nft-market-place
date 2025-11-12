@@ -1,4 +1,4 @@
-import Background from "../Drop/Background.svg";
+import Background from "../Drop/Background.png";
 import Slide1 from "../Drop/slide1.png";
 import Slide2 from "../Drop/slide2.svg";
 import Slide3 from "../Drop/slide3.svg";

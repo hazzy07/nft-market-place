@@ -32,20 +32,24 @@ const Tokens = () => {
     >
       {/* Left Section */}
       {showLeft && (
-        <div className="flex flex-col bg-[#2D2E31] border-b border-[#FFFFFF14] items-start transition-all duration-300">
+        <div className="flex flex-col  border-b border-[#FFFFFF14] items-start transition-all duration-300">
           <div className="flex px-6 w-full py-[10px] gap-3 border-[#FFFFFF14] border-b">
             <button
               onClick={() => setActive("collection")}
-              className={`px-4 flex items-center gap-2 w-1/2 py-1 rounded-md border border-[#ffffff46] ${
-                active === "collection" ? "bg-black" : "bg-transparent"
+              className={`px-4 flex items-center justify-center gap-2 w-1/2 py-[6px] rounded-md border border-[#ffffff46] ${
+                active === "collection"
+                  ? "bg-black text-[#ACADAE] "
+                  : "bg-transparent"
               }`}
             >
               <BsGrid1X2 size={15} /> Collection
             </button>
             <button
               onClick={() => setActive("token")}
-              className={`px-4 flex items-center gap-2 w-1/2 py-1 rounded-md border border-[#ffffff46] ${
-                active === "token" ? "bg-black" : "bg-transparent"
+              className={`px-4 flex items-center justify-center gap-2 w-1/2 py-[6px] rounded-md border border-[#ffffff46] ${
+                active === "token"
+                  ? "bg-black text-[#ACADAE] "
+                  : "bg-transparent"
               }`}
             >
               <StokeToken /> Token
@@ -85,7 +89,7 @@ const Tokens = () => {
               <TfiMedall /> Top
             </button>
             <button
-              className={`px-4 flex items-center gap-2 w-1/2 py-1 rounded-md border border-[#ffffff46]`}
+              className={`px-4 flex items-center gap-2 w-1/2 py-1 bg-[#1B1D1F] rounded-md border border-[#ffffff46]`}
             >
               <MdLocalFireDepartment /> Trending
             </button>

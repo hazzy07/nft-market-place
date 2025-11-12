@@ -23,7 +23,7 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/collection" element={<Profile />} />
           <Route path="/tokens" element={<Tokens />} />
           <Route path="/calender" element={<Calendar />} />
           <Route path="/activity" element={<Activity />} />

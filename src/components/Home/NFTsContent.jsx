@@ -160,13 +160,14 @@ export default function NFTsContent() {
           </div>
         ))}
       </div>
-      <div className="absolute top-6 right-14 hidden lg:flex items-center gap-2">
+      <div className="absolute top-[24px] right-14 hidden lg:flex items-center gap-2">
        
           <Dropdown
             items={["A", "B", "C"]}
             placeholder="1d"
-            className="bg-[#FFFFFF10] border border-[#FFFFFF10] rounded-md cursor-pointer"
+            className="bg-tranparent  rounded-md cursor-pointer"
             onSelect={(val) => console.log(val)}
+            paddingY = "py-[6px]"
           />
     
 

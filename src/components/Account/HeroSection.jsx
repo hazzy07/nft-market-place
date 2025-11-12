@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import {Gallery } from "../../assets/Route/Account";
+import { Gallery } from "../../assets/Route/Account";
 
 import { TiStarburst } from "react-icons/ti";
 import { BsExclamationCircle } from "react-icons/bs";
@@ -17,7 +17,47 @@ export default function HeroSection() {
   const tabs = [
     {
       label: "Galleries",
-      content: <Structure></Structure>,
+      content: (
+        <>
+          <Structure />
+         
+          <div className="relative flex flex-col mt-[-120px] py-6 items-center justify-center left-[50%] -translate-x-1/2">
+            <div className="relative flex justify-center items-center">
+              <img
+                src={Acc4}
+                className="w-32 h-32 rounded-lg absolute -rotate-12 -translate-x-14 z-0"
+              />
+
+              <img src={Acc2} className="w-36 h-36 rounded-lg relative z-10" />
+
+              <img
+                src={Acc5}
+                className="w-32 h-32 rounded-lg absolute rotate-12 translate-x-14 z-0"
+              />
+            </div>
+
+            <h1 className="font-inter text-[32px] font-[400] mt-6">
+              Feature your favorites
+            </h1>
+
+            <p className="font-inter text-center text-[16px] font-[400] mt-2 leading-relaxed">
+              Showcase your favorite NFTs with our new galleries section. This
+              tab
+              <br />
+              is publicly hidden until you add sections.
+            </p>
+
+            <button
+              onClick={() => setIsOpen(true)}
+              className="rounded-md px-5 py-2 bg-black border border-[#2D2E31] mt-4 hover:bg-[#111]"
+            >
+              Create a gallery
+            </button>
+          </div>
+
+
+        </>
+      ),
     },
     {
       label: "NFTs",
@@ -195,80 +235,44 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative flex flex-col mt-[-120px] py-6 items-center justify-center left-[50%] -translate-x-1/2">
-        <div className="relative flex justify-center items-center">
-          <img
-            src={Acc4}
-            className="w-32 h-32 rounded-lg absolute -rotate-12 -translate-x-14 z-0"
-          />
+      {isOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
+          <div className="bg-[#1a1a1a] w-full max-w-[450px] rounded-xl shadow-lg relative text-center border border-[#2D2E31]">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 rounded-full px-3 py-[5px]  bg-[#ffffff2d] text-gray-400 hover:text-white text-2xl"
+            >
+              ✕
+            </button>
 
-          <img src={Acc2} className="w-36 h-36 rounded-lg relative z-10" />
+            <div className="p-6">
+              <img
+                src={Gallery}
+                alt="Gallery Preview"
+                className="w-full mx-auto mb-4 rounded-md object-cover"
+              />
 
-          <img
-            src={Acc5}
-            className="w-32 h-32 rounded-lg absolute rotate-12 translate-x-14 z-0"
-          />
-        </div>
+              <h2 className="text-white text-lg font-semibold mb-2">
+                Create a gallery
+              </h2>
 
-        <h1 className="font-inter text-[32px] font-[400] mt-6">
-          Feature your favorites
-        </h1>
+              <p className="text-gray-400 text-sm mb-6">
+                Select any items you own to create a gallery to feature on your
+                profile.
+              </p>
+            </div>
 
-        <p className="font-inter text-center text-[16px] font-[400] mt-2 leading-relaxed">
-          Showcase your favorite NFTs with our new galleries section. This tab
-          <br />
-          is publicly hidden until you add sections.
-        </p>
-
-        <button
-          onClick={() => setIsOpen(true)}
-          className="rounded-md px-5 py-2 bg-black border border-[#2D2E31] mt-4 hover:bg-[#111]"
-        >
-          Create a gallery
-        </button>
-
-       
-      </div>
-       {isOpen && (
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
-        <div className="bg-[#1a1a1a] w-full max-w-[450px] rounded-xl shadow-lg relative text-center border border-[#2D2E31]">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-3 right-3 rounded-full px-3 py-[5px]  bg-[#ffffff2d] text-gray-400 hover:text-white text-2xl"
-          >
-            ✕
-          </button>
-
-         <div className="p-6">
-             <img
-            src={Gallery}
-            alt="Gallery Preview"
-            className="w-full mx-auto mb-4 rounded-md object-cover"
-          />
-
-          <h2 className="text-white text-lg font-semibold mb-2">
-            Create a gallery
-          </h2>
-
-          <p className="text-gray-400 text-sm mb-6">
-            Select any items you own to create a gallery to feature on your
-            profile.
-          </p>
-         </div>
-
-          <div className="bg-black rounded-b-xl border-t p-4 border-[#ffffff31] ">
-
-          <button
-            onClick={() => setIsOpen(false)}
-            className="w-full bg-white text-black font-medium py-2.5 rounded-full hover:bg-gray-200"
-          >
-            Get started
-          </button>
+            <div className="bg-black rounded-b-xl border-t p-4 border-[#ffffff31] ">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-full bg-white text-black font-medium py-2.5 rounded-full hover:bg-gray-200"
+              >
+                Get started
+              </button>
+            </div>
           </div>
-
         </div>
-      </div>
-    )}
+      )}
     </>
   );
 }

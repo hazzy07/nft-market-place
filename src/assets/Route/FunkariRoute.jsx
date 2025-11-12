@@ -4,7 +4,7 @@ import Fun186 from "../Funkari/Fun182 (7).svg";
 import Fun19 from "../Funkari/Fun182 (8).svg";
 import Fun58 from "../Funkari/Fun182 (9).svg";
 import Fun64 from "../Funkari/Fun182 (10).svg";
-import FunkariBack from "../Funkari/FunkariBack.svg";
+import FunkariBack from "../Funkari/FunkariBack.png";
 import FUNLogo from "../Funkari/FUNLogo.svg";
 
 export {

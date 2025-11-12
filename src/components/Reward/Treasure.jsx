@@ -16,7 +16,7 @@ export default function Treasure() {
     {
       label: (
         <>
-          <div className="flex gap-2 items-center ">
+          <div className="flex gap-2 justify-center items-center ">
             <PiTreasureChestBold />
             Chest & Voyages
           </div>
@@ -32,7 +32,7 @@ export default function Treasure() {
               <h1 className="font-inter text-[14px] "> Treasure Chest </h1>
               <SlExclamation size={21} />
             </div>
-            <div className="bg-black border text-[12px] font-inter font-[400] border-[#ffffff44] rounded-md py-1 px-3">
+            <div className="bg-black border flex justify-center items-center text-[14px] font-inter font-[400] border-[#ffffff44] rounded-md pt-2 pb-1 px-4">
               View All Chest
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function Treasure() {
     {
       label: (
         <>
-          <div className="flex gap-2 items-center ">
+          <div className="flex gap-2 justify-center items-center ">
             <CgMenuMotion />
             Reward Pool
           </div>
@@ -55,7 +55,7 @@ export default function Treasure() {
     {
       label: (
         <>
-          <div className="flex gap-2 items-center ">
+          <div className="flex gap-2 justify-center items-center ">
             <GiRoundBottomFlask />
             My Activity
           </div>

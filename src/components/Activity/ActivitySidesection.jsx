@@ -110,8 +110,8 @@ export default function ActivitySidesection({
       </AccordionItem>
 
       <AccordionItem title="Collections" initialOpen={true}>
-        <div className="relative flex items-center w-full max-w-sm border bg-black border-[#3d3e41] rounded-md px-3 py-2">
-          <FiSearch className="text-white w-5 h-5 mr-2" />
+        <div className="relative flex items-center w-full max-w-sm border bg-black border-[#3d3e41] rounded-[7px] px-3 py-2">
+          <FiSearch className="text-white w-[17px] h-[17px] mr-2" />
           <input
             type="text"
             placeholder="Search for collections"
@@ -143,7 +143,7 @@ export default function ActivitySidesection({
             >
               <div
                 onClick={() => toggleSelect(item.name)}
-                className="relative w-5 h-5 bg-black border border-gray-500 rounded-sm flex items-center justify-center cursor-pointer"
+                className="relative w-5 h-5 bg-black border border-[#34353C] rounded-md flex items-center justify-center cursor-pointer"
               >
                 {selected.includes(item.name) && (
                   <svg

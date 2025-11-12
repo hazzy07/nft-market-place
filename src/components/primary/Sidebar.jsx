@@ -14,6 +14,7 @@ import {
   WhiteLogo,
 } from "../../assets/Route/HomeRoute";
 import { Logopage } from "../../assets/Route/Reward";
+import { IoMdSettings } from "react-icons/io";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { path: "/", icon: <MdOutlineExplore size={20} />, label: "Discover" },
-    { path: "/profile", icon: <BsGrid1X2 size={18} />, label: "Collection" },
+    { path: "/collection", icon: <BsGrid1X2 size={18} />, label: "Collection" },
     { path: "/tokens", icon: <StokeToken size={20} />, label: "Tokens" },
     { path: "/calender", icon: <CiCalendar size={20} />, label: "Drop" },
     { path: "/activity", icon: <TfiMenuAlt size={20} />, label: "Activity" },
@@ -51,7 +52,7 @@ export default function Sidebar() {
     },
 
     { divider: true },
-    { path: "/help", icon: <HelpIcon size={22} />, label: "Support" },
+    { path: "/help", icon: <IoMdSettings size={22} />, label: "Setting" },
   ];
 
   const currentLogo = location.pathname === "/" ? Logo : WhiteLogo;

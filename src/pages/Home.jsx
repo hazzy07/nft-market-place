@@ -11,8 +11,8 @@ export default function Home() {
 
   return (
     <div
-      className="bg-[#222325] overflow-y-scroll relative"
-      style={{ height: "calc(100vh - 60px)" }}
+      className="bg-[#222325]  relative"
+      // style={{ height: "calc(100vh - 75px)" }}
     >
       <div className="grid lg:grid-cols-3">
         {/* Main content */}
@@ -39,7 +39,7 @@ export default function Home() {
         <MdKeyboardDoubleArrowRight />
       </div>
 
-      <Footer />
+    
     </div>
   );
 }

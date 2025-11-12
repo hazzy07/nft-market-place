@@ -6,8 +6,9 @@ export default function Profile() {
  
   return (
     <>
-      <div className="overflow-y-scroll relative"
-      style={{ height: "calc(100vh - 60px)" }}>
+      <div className=" relative"
+      // style={{ height: "calc(100vh - 60px)" }}
+      >
         
          <TwoSectionGrid/>
       </div>

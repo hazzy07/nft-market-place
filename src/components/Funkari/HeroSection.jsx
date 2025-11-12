@@ -207,7 +207,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-        <div className="">
+        <div className=" mt-10 md:mt-5 ">
           <TabsStructure
             tabs={tabs}
             defaultTab={0}
@@ -218,7 +218,7 @@ export default function HeroSection() {
 
               inactiveTab:
                 "text-gray-400 font-inter font-[400] text-[12px] hover:text-white",
-              content: "",
+              content: " ml-5 mt-3 ",
             }}
             onChange={(index) => console.log("Active tab:", index)}
           />

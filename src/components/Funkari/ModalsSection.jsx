@@ -27,7 +27,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import DetailModalContent from "./DetailModalContent";
 import { GoGraph } from "react-icons/go";
 import { RiStackFill } from "react-icons/ri";
-import DetailTab from "./DetailTab"
+import DetailTab from "./DetailTab";
 const nftData = [
   {
     id: 1,
@@ -139,12 +139,17 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           />
         </div>
 
-        <div className="flex xl:flex-nowrap flex-wrap gap-3">
+        <div className="flex xl:flex-nowrap h-auto flex-wrap gap-3">
           <Dropdown
-            items={["low to high", "Oldest", "Trending"]}
-            placeholder="high to low"
+            items={[
+              { label: "Low to High" },
+              { label: "Oldest" },
+              { label: "Trending" },
+            ]}
+             paddingY="py-[3px] "
+            placeholder={{ label: "High to Low" }}
             onSelect={(v) => console.log(v)}
-            className="w-[180px]  font-inter  font-[400] text-[12px]  "
+            className="w-[180px] font-inter font-[400] text-[12px]"
           />
 
           {[
@@ -158,7 +163,7 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           ].map((opt) => (
             <div
               key={opt.id}
-              className={`p-1  rounded-md cursor-pointer ${
+              className={`p-1 px-[5px] rounded-md cursor-pointer ${
                 gridCols === opt.id
                   ? "bg-[#FFFFFF10] border border-[#ffffff15] text-white"
                   : "text-gray-300 hover:text-yellow-300"
@@ -170,14 +175,14 @@ export default function ModalSection({ showLeft, setShowLeft }) {
           ))}
 
           <div
-            className={`p-1 flex items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
+            className={`p-1 px-[5px] flex items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
                    hover:text-yellow-300
               `}
           >
             <CiSettings />
           </div>
           <div
-            className={`px-2 flex gap-2 items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
+            className={`px-[9px] flex gap-2 items-center border border-[#ffffff1f] rounded-md cursor-pointer bg-black       
                    hover:text-yellow-300
               `}
           >
@@ -190,7 +195,7 @@ export default function ModalSection({ showLeft, setShowLeft }) {
       {/* Search Bar */}
       <div className="p-4">
         <div className="flex gap-3 items-center">
-          <div className="relative flex items-center w-full max-w-sm border bg-black border-[#3d3e41] rounded-md px-3 py-1">
+          <div className="relative flex items-center w-full max-w-sm border bg-black border-[#3d3e41] rounded-md px-3 py-[6px]">
             <FiSearch size={15} className="mr-2" />
             <input
               type="text"
@@ -284,16 +289,16 @@ export default function ModalSection({ showLeft, setShowLeft }) {
             {/* Main */}
             <div className="p-6 overflow-y-auto no-scrollbar max-h-[85vh]">
               <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-                <div className="flex md:order-1 order-2 justify-center items-center bg-black rounded-md">
+                <div className="flex  justify-center items-center  rounded-md">
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.name}
-                    className="object-cover w-full h-full rounded-md"
+                    className="object-cover w-full  rounded-md"
                   />
                 </div>
 
                 {/* Right */}
-                <div className="text-white md:order-2 order-1 flex flex-col gap-5">
+                <div className="text-white  flex flex-col gap-5">
                   <div>
                     <h2 className="text-2xl font-semibold mb-3">
                       {selectedItem.name}
@@ -391,8 +396,6 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                                   ✕
                                 </button>
                               </div>
-
-                             
 
                               {activeMiniModal === "more" && (
                                 <>
@@ -562,17 +565,21 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                   </div>
 
                   <div className="bg-black p-4 rounded-md border border-[#ffffff1a]">
-                    <div className="flex justify-between text-gray-400 text-sm mb-4">
+                    <div className="flex text-[12px] justify-between text-gray-400  mb-4">
                       <div>
-                        <p>Current Price</p>
+                        <p>TOP OFFER </p>
                         <p>{selectedItem.price}</p>
                       </div>
                       <div>
-                        <p>Last Sale</p>
+                        <p> COLLECTION FLOOR </p>
                         <p>{selectedItem.lastSale}</p>
                       </div>
                       <div>
-                        <p>Edition</p>
+                        <p>PARITY</p>
+                        <p>#{selectedItem.id}</p>
+                      </div>
+                       <div>
+                        <p>LAST SALE</p>
                         <p>#{selectedItem.id}</p>
                       </div>
                     </div>
@@ -588,10 +595,10 @@ export default function ModalSection({ showLeft, setShowLeft }) {
                       </div>
 
                       <div className="mt-3 flex gap-2">
-                        <button className="w-full py-2 bg-white text-black text-[12px] rounded-md">
+                        <button className="w-full py-2 bg-white hover:bg-transparent hover:text-white hover:border  border-[#ffffff2a] text-black text-[12px] rounded-md">
                           Buy now
                         </button>
-                        <button className="w-full py-2 border border-[#ffffff2a] text-[12px] text-white rounded-md">
+                        <button className="w-full py-2 hover:bg-white  hover:text-black border border-[#ffffff2a] text-[12px] text-white rounded-md">
                           Make offer
                         </button>
                       </div>
